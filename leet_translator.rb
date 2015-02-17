@@ -2,10 +2,20 @@ def say(words)
   puts "> #{words}"
 end
 
-name_arr = []
-name = ''
+def choice_validation
+  begin
+    play_again = gets.chomp
+    say "Input not valid" unless play_again == "y" or play_again == "n"
+  end until play_again == 'y' or play_again == 'n'
+  play_again
+end
+
+
 begin
-  
+      
+  name_arr = []
+  name = ''
+
   say "Enter a word for '1337' Translation: "
   word = gets.chomp.downcase
 
@@ -36,6 +46,6 @@ begin
   say name
 
   say "Would you like to enter another word? [y/n]"
-  play_again = gets.chomp
+  play_again = choice_validation
 
 end until play_again == "n"
